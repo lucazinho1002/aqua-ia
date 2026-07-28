@@ -1,0 +1,12 @@
+{
+  "from": {
+    "item": "config.json"
+  },
+  "generation": {
+    "vocabulary": "vocab.json",
+    "normal": {
+      "Oi": "2+117+0+3+0+5+0+7+118",
+      "oi": "2+117+0+3+0+5+0+7+118"
+    }
+  }
+}

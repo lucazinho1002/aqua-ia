@@ -1,0 +1,12 @@
+{
+  "ia": {
+    "name": "aqua",
+    "version": "0.1"
+  },
+  "itens": {
+    "vocabulary": "vocab.json",
+    "generation": "generation.json",
+    "ui": "index.html",
+    "electron?": "yes"
+  }
+}
