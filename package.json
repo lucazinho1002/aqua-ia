@@ -1,11 +1,31 @@
 {
   "name": "aqua",
-  "version": "0.1.2",
+  "version": "0.2.3",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder"
   },
   "devDependencies": {
-    "electron": "^43.2.0"
+    "electron": "^43.2.0",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "com.aqua.ai",
+    "productName": "aqua",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "files": [
+      "**/*",
+      "src/config.json",
+      "src/vocab.json",
+      "src/generation.json",
+      "src/index.html",
+      "main.js"
+    ]
   }
 }
