@@ -15,127 +15,136 @@
         body {
             background-color: #030712;
             color: #e0f2fe;
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
+            overflow: hidden;
             background-image: 
                 radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.15), transparent 70%),
                 radial-gradient(circle at 80% 80%, rgba(14, 165, 233, 0.08), transparent 50%);
         }
 
-        header {
-            padding: 1.5rem 2rem;
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+        /* Barra Lateral (Sidebar) */
+        sidebar {
+            width: 260px;
+            background: rgba(10, 15, 30, 0.8);
+            border-right: 1px solid rgba(56, 189, 248, 0.2);
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            flex-direction: column;
+            padding: 1rem;
+            gap: 1rem;
         }
 
-        .brand {
+        .brand-sidebar {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
         }
 
         .logo-orb {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             background: linear-gradient(135deg, #06b6d4, #3b82f6);
-            box-shadow: 0 0 15px #06b6d4, 0 0 30px #3b82f6;
-            animation: pulse 3s infinite alternate;
+            box-shadow: 0 0 10px #06b6d4;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 10px #06b6d4; }
-            100% { transform: scale(1.1); box-shadow: 0 0 25px #06b6d4, 0 0 40px #3b82f6; }
-        }
-
-        .brand h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 2px;
+        .brand-sidebar h1 {
+            font-size: 1.1rem;
+            letter-spacing: 1px;
             background: linear-gradient(to right, #38bdf8, #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
+        }
+
+        .new-chat-btn {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: #38bdf8;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .new-chat-btn:hover {
+            background: rgba(56, 189, 248, 0.2);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+        }
+
+        .chat-list {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .chat-item {
+            padding: 10px 12px;
+            border-radius: 8px;
+            background: transparent;
+            color: #94a3b8;
+            cursor: pointer;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .chat-item:hover {
+            background: rgba(30, 41, 59, 0.5);
+            color: #e0f2fe;
+        }
+
+        .chat-item.active {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: rgba(56, 189, 248, 0.3);
+            color: #38bdf8;
+        }
+
+        /* Área Principal do Chat */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            padding: 1.5rem;
+            gap: 1rem;
+            max-width: calc(100vw - 260px);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.1);
         }
 
         .system-status {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #94a3b8;
-        }
-
-        .status-badge {
             display: flex;
             align-items: center;
             gap: 6px;
-            padding: 4px 10px;
-            border-radius: 20px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            color: #34d399;
         }
 
         .status-dot {
-            width: 8px;
-            height: 8px;
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
             background-color: #34d399;
-            box-shadow: 0 0 8px #34d399;
-        }
-
-        main {
-            flex: 1;
-            max-width: 1000px;
-            width: 100%;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .config-panel {
-            background: rgba(15, 23, 42, 0.4);
-            border: 1px solid rgba(56, 189, 248, 0.15);
-            border-radius: 12px;
-            padding: 1rem 1.5rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            box-shadow: inset 0 0 15px rgba(6, 182, 212, 0.05);
-        }
-
-        .info-block {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .info-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #64748b;
-        }
-
-        .info-value {
-            font-size: 0.95rem;
-            color: #38bdf8;
-            font-weight: 600;
+            box-shadow: 0 0 6px #34d399;
         }
 
         .chat-container {
             flex: 1;
-            min-height: 400px;
             background: rgba(15, 23, 42, 0.6);
             border: 1px solid rgba(56, 189, 248, 0.2);
             border-radius: 16px;
@@ -145,7 +154,6 @@
             gap: 1rem;
             overflow-y: auto;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            position: relative;
         }
 
         .message {
@@ -154,12 +162,7 @@
             border-radius: 12px;
             line-height: 1.5;
             font-size: 0.95rem;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            word-break: break-word;
         }
 
         .message.system {
@@ -169,6 +172,7 @@
             color: #94a3b8;
             font-size: 0.85rem;
             text-align: center;
+            transition: opacity 0.5s ease;
         }
 
         .message.user {
@@ -176,7 +180,6 @@
             background: linear-gradient(135deg, #0284c7, #2563eb);
             color: #ffffff;
             border-bottom-right-radius: 2px;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
 
         .message.aqua {
@@ -185,7 +188,6 @@
             border: 1px solid rgba(56, 189, 248, 0.4);
             color: #e0f2fe;
             border-bottom-left-radius: 2px;
-            box-shadow: 0 0 15px rgba(6, 182, 212, 0.15);
         }
 
         .input-panel {
@@ -212,7 +214,7 @@
             color: #475569;
         }
 
-        button {
+        button.send-btn {
             background: linear-gradient(135deg, #06b6d4, #2563eb);
             border: none;
             color: white;
@@ -221,187 +223,160 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
-            box-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
         }
 
-        button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 0 20px rgba(6, 182, 212, 0.6);
-        }
-
-        footer {
-            text-align: center;
-            padding: 1rem;
-            font-size: 0.8rem;
-            color: #475569;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        button.send-btn:hover {
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="brand">
+    <!-- BARRA LATERAL -->
+    <sidebar>
+        <div class="brand-sidebar">
             <div class="logo-orb"></div>
-            <h1 id="ia-title">AQUA AI</h1>
+            <h1>AQUA AI</h1>
         </div>
-        <div class="system-status">
-            <span>VERSÃO: <strong id="ia-version" style="color: #38bdf8;">--</strong></span>
-            <div class="status-badge">
-                <div class="status-dot"></div>
-                <span>SISTEMA ATIVO</span>
-            </div>
+        <button class="new-chat-btn" onclick="createNewChat()">+ Novo Chat</button>
+        <div class="chat-list" id="chat-list">
+            <!-- Os chats salvos aparecem aqui -->
         </div>
-    </header>
+    </sidebar>
 
-    <main>
-        <div class="config-panel">
-            <div class="info-block">
-                <span class="info-label">Vocabulário:</span>
-                <span class="info-value" id="cfg-vocab">Carregando...</span>
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+        <header>
+            <span style="font-weight: 600; font-size: 0.95rem; color: #38bdf8;" id="current-chat-title">Selecione um chat</span>
+            <div class="system-status">
+                <div class="status-dot"></div>
+                <span id="status-text">Carregando GGUF...</span>
             </div>
-            <div class="info-block">
-                <span class="info-label">Geração:</span>
-                <span class="info-value" id="cfg-gen">Carregando...</span>
-            </div>
-            <div class="info-block">
-                <span class="info-label">Interface (UI):</span>
-                <span class="info-value" id="cfg-ui">Carregando...</span>
-            </div>
-            <div class="info-block">
-                <span class="info-label">Electron:</span>
-                <span class="info-value" id="cfg-electron">Carregando...</span>
-            </div>
-        </div>
+        </header>
 
         <div class="chat-container" id="chat">
-            <div class="message system">
-                Lendo config.json para descobrir os caminhos dos arquivos...
+            <div class="message system" id="loading-msg">
+                Carregando o modelo GGUF no Electron... Aguarde um instante.
             </div>
         </div>
 
         <div class="input-panel">
-            <input type="text" id="user-input" placeholder="Digite uma palavra ou comando (ex: Oi)..." onkeypress="handleKeyPress(event)">
-            <button onclick="sendMessage()">ENVIAR</button>
+            <input type="text" id="user-input" placeholder="Digite sua mensagem..." onkeypress="handleKeyPress(event)">
+            <button class="send-btn" onclick="sendMessage()">ENVIAR</button>
         </div>
     </main>
 
-    <footer>
-        Aqua AI System &copy; 2026 - Interface Futurista Ativa
-    </footer>
-
     <script>
-        let configData = null;
-        let vocabData = null;
-        let genData = null;
+        const { ipcRenderer } = require('electron');
+        let currentChatId = null;
+        let chatsData = {};
 
-        async function loadSystem() {
-            try {
-                // 1. Lê o config.json que está na mesma pasta (src/config.json)
-                const resConfig = await fetch('config.json');
-                if (!resConfig.ok) throw new Error('Não foi possível carregar o config.json');
-                configData = await resConfig.json();
+        // Quando o modelo carregar, busca os chats salvos no database.json
+        ipcRenderer.on('system-ready', async (event, message) => {
+            const loadingMsg = document.getElementById('loading-msg');
+            if (loadingMsg) {
+                loadingMsg.innerText = message;
+                setTimeout(() => {
+                    loadingMsg.style.opacity = '0';
+                    setTimeout(() => loadingMsg.remove(), 500);
+                }, 1000);
+            }
+            document.getElementById('status-text').innerText = "Pronto";
+            
+            // Carrega os chats salvos anteriormente
+            chatsData = await ipcRenderer.invoke('carregar-chats');
+            renderChatList();
 
-                // Atualiza os dados visuais da interface com base no config
-                document.getElementById('ia-title').innerText = (configData.ia?.name || 'AQUA').toUpperCase() + ' AI';
-                document.getElementById('ia-version').innerText = configData.ia?.version || '0.1';
-                
-                const vocabPath = configData.itens?.vocabulary;
-                const genPath = configData.itens?.generation;
-                const uiPath = configData.itens?.ui;
-                const electronStatus = configData.itens?.['electron?'];
+            // Se houver chats salvos, abre o primeiro; senão, cria um novo
+            const chatIds = Object.keys(chatsData);
+            if (chatIds.length > 0) {
+                switchChat(chatIds[chatIds.length - 1]);
+            } else {
+                await createNewChat();
+            }
+        });
 
-                document.getElementById('cfg-vocab').innerText = vocabPath || 'Não definido';
-                document.getElementById('cfg-gen').innerText = genPath || 'Não definido';
-                document.getElementById('cfg-ui').innerText = uiPath || 'Não definido';
-                document.getElementById('cfg-electron').innerText = electronStatus || 'no';
+        async function createNewChat() {
+            const chatId = await ipcRenderer.invoke('criar-novo-chat');
+            if (!chatId) return;
 
-                // 2. Lê dinamicamente o arquivo de vocabulário usando o caminho exato do config.json
-                if (vocabPath) {
-                    // Como o index.html está em src/, se o config.json indicar "src/vocab.json", 
-                    // ajustamos para buscar corretamente dentro do contexto do electron/servidor
-                    const cleanVocabPath = vocabPath.startsWith('src/') ? vocabPath.replace('src/', '') : vocabPath;
-                    const resVocab = await fetch(cleanVocabPath);
-                    if (resVocab.ok) {
-                        vocabData = await resVocab.json();
-                    } else {
-                        console.warn("Não foi possível carregar o vocabulário em:", cleanVocabPath);
-                    }
-                }
+            chatsData = await ipcRenderer.invoke('carregar-chats');
+            renderChatList();
+            switchChat(chatId);
+        }
 
-                // 3. Lê dinamicamente o arquivo de geração usando o caminho exato do config.json
-                if (genPath) {
-                    const cleanGenPath = genPath.startsWith('src/') ? genPath.replace('src/', '') : genPath;
-                    const resGen = await fetch(cleanGenPath);
-                    if (resGen.ok) {
-                        genData = await resGen.json();
-                    } else {
-                        console.warn("Não foi possível carregar a geração em:", cleanGenPath);
-                    }
-                }
+        function renderChatList() {
+            const listEl = document.getElementById('chat-list');
+            listEl.innerHTML = '';
 
-                appendMessage('system', 'Arquivos carregados com sucesso com base nas diretrizes do config.json!');
-                appendMessage('aqua', 'Olá! Como posso te ajudar hoje?');
-
-            } catch (err) {
-                console.error(err);
-                appendMessage('system', 'Erro crítico ao carregar os arquivos a partir do config.json.');
+            for (const id in chatsData) {
+                const item = document.createElement('div');
+                item.className = 'chat-item ' + (id === currentChatId ? 'active' : '');
+                item.innerText = chatsData[id].title;
+                item.onclick = () => switchChat(id);
+                listEl.appendChild(item);
             }
         }
 
-        function appendMessage(sender, text) {
+        function switchChat(chatId) {
+            currentChatId = chatId;
+            if (!chatsData[chatId]) return;
+
+            document.getElementById('current-chat-title').innerText = chatsData[chatId].title;
+            
+            const chatContainer = document.getElementById('chat');
+            chatContainer.innerHTML = '';
+            
+            // Redesenha as mensagens guardadas no banco
+            chatsData[chatId].messages.forEach(msg => {
+                const msgDiv = document.createElement('div');
+                msgDiv.className = 'message ' + msg.sender;
+                msgDiv.innerText = msg.text;
+                chatContainer.appendChild(msgDiv);
+            });
+
+            renderChatList();
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('user-input');
+            const text = input.value.trim();
+            if (!text || !currentChatId) return;
+
+            // Adiciona na tela do usuário
+            appendUIMessage('user', text);
+            input.value = '';
+
+            // Atualiza localmente no array para feedback imediato
+            chatsData[currentChatId].messages.push({ sender: 'user', text: text });
+            if (chatsData[currentChatId].messages.length <= 2) {
+                chatsData[currentChatId].title = text.length > 20 ? text.substring(0, 20) + '...' : text;
+                renderChatList();
+                document.getElementById('current-chat-title').innerText = chatsData[currentChatId].title;
+            }
+
+            const responseMsgId = 'resp-' + Date.now();
+            appendUIMessage('aqua', 'Pensando...', responseMsgId);
+
+            try {
+                const resposta = await ipcRenderer.invoke('perguntar-ia', { chatId: currentChatId, mensagem: text });
+                
+                chatsData[currentChatId].messages.push({ sender: 'aqua', text: resposta });
+                document.getElementById(responseMsgId).innerText = resposta;
+            } catch (err) {
+                document.getElementById(responseMsgId).innerText = 'Erro ao processar a resposta da IA.';
+                console.error(err);
+            }
+        }
+
+        function appendUIMessage(sender, text, customId = null) {
             const chat = document.getElementById('chat');
             const msg = document.createElement('div');
             msg.className = 'message ' + sender;
+            if (customId) msg.id = customId;
             msg.innerText = text;
             chat.appendChild(msg);
             chat.scrollTop = chat.scrollHeight;
-        }
-
-        function sendMessage() {
-            const input = document.getElementById('user-input');
-            const text = input.value.trim();
-            if (!text) return;
-
-            appendMessage('user', text);
-            input.value = '';
-
-            setTimeout(() => {
-                let responseGenerated = false;
-
-                if (genData && genData.generation && genData.generation.normal) {
-                    const normalMap = genData.generation.normal;
-                    
-                    if (normalMap[text]) {
-                        const pattern = normalMap[text];
-                        const assembledResponse = decodeTokenPattern(pattern);
-                        appendMessage('aqua', assembledResponse);
-                        responseGenerated = true;
-                    }
-                }
-
-                if (!responseGenerated) {
-                    appendMessage('aqua', 'Processado: "' + text + '". (Nenhum padrão cadastrado no generation.json para essa entrada)');
-                }
-            }, 400);
-        }
-
-        function decodeTokenPattern(pattern) {
-            if (!vocabData || !vocabData.vocab) return pattern;
-
-            const tokens = pattern.split('+');
-            let output = '';
-
-            tokens.forEach(token => {
-                const cleanToken = token.trim();
-                if (vocabData.vocab[cleanToken] !== undefined) {
-                    output += vocabData.vocab[cleanToken];
-                } else {
-                    output += cleanToken;
-                }
-            });
-
-            return output;
         }
 
         function handleKeyPress(e) {
@@ -409,8 +384,6 @@
                 sendMessage();
             }
         }
-
-        window.onload = loadSystem;
     </script>
 </body>
 </html>
